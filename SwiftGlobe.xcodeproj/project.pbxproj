@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -118,6 +118,7 @@
 		87E73760244FAF3A00E7BC0F /* SwiftGlobe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B247FD1E96D5F700A2EAA7 /* SwiftGlobe.swift */; };
 		87E73761244FAF3A00E7BC0F /* SwiftGlobe+DemoMarkers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E736F5244F528700E7BC0F /* SwiftGlobe+DemoMarkers.swift */; };
 		87E73762244FAF3A00E7BC0F /* GlowingMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E736F1244F4C2D00E7BC0F /* GlowingMarker.swift */; };
+		C9CB9B3F2C0D0D8400997F05 /* SwiftAstro in Frameworks */ = {isa = PBXBuildFile; productRef = C9CB9B3E2C0D0D8400997F05 /* SwiftAstro */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -210,6 +211,7 @@
 		87E7374C244FAC9400E7BC0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87E7374E244FAC9400E7BC0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87E955CF1EC3897F007496A9 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
+		C9CB9B3D2C0D0D6C00997F05 /* SwiftAstro */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftAstro; path = ../../SwiftAstro; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +233,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9CB9B3F2C0D0D8400997F05 /* SwiftAstro in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +308,7 @@
 		87B247861E96C20B00A2EAA7 = {
 			isa = PBXGroup;
 			children = (
+				C9CB9B3C2C0D0D6600997F05 /* Packages */,
 				87E955CF1EC3897F007496A9 /* readme.md */,
 				87E736F0244F4BD600E7BC0F /* src */,
 				87B247911E96C20B00A2EAA7 /* SwiftGlobe-iOS */,
@@ -313,6 +317,7 @@
 				87E7373F244FAC9000E7BC0F /* SwiftGlobe-AR */,
 				87AEE29B2A327577000F4A34 /* SwiftGlobe-Watch Watch App */,
 				87B247901E96C20B00A2EAA7 /* Products */,
+				C9CB9B392C0D03B300997F05 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -418,6 +423,21 @@
 			path = "SwiftGlobe-AR";
 			sourceTree = "<group>";
 		};
+		C9CB9B392C0D03B300997F05 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C9CB9B3C2C0D0D6600997F05 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				C9CB9B3D2C0D0D6C00997F05 /* SwiftAstro */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -485,6 +505,9 @@
 			dependencies = (
 			);
 			name = "SwiftGlobe-iOS";
+			packageProductDependencies = (
+				C9CB9B3E2C0D0D8400997F05 /* SwiftAstro */,
+			);
 			productName = SwiftGlobe;
 			productReference = 87B2478F1E96C20B00A2EAA7 /* SwiftGlobe-iOS.app */;
 			productType = "com.apple.product-type.application";
@@ -574,6 +597,8 @@
 				Base,
 			);
 			mainGroup = 87B247861E96C20B00A2EAA7;
+			packageReferences = (
+			);
 			productRefGroup = 87B247901E96C20B00A2EAA7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1315,6 +1340,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C9CB9B3E2C0D0D8400997F05 /* SwiftAstro */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwiftAstro;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 87B247871E96C20B00A2EAA7 /* Project object */;
 }
