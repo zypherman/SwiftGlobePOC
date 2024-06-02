@@ -16,20 +16,32 @@ class ViewController: UIViewController {
     @IBOutlet weak var sceneView : SCNView!
     
     var swiftGlobe = SwiftGlobe(alignment: .poles)
+    var updateTimer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         swiftGlobe.setupInSceneView(sceneView, forARKit: false, enableAutomaticSpin: false)
-        swiftGlobe.addSunMarker()
+        updateSunMarker()
+        
+        startPositionUpdateTimer()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    private func startPositionUpdateTimer() {
+        updateTimer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(updateSunMarker), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateSunMarker() {
+        print("Update sun marker")
+        swiftGlobe.addSunMarker()
+    }
+    
+    deinit {
+        updateTimer?.invalidate()
+    }
 }
-
