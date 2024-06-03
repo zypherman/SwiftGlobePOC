@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -100,8 +100,7 @@
 		87E7375F244FAD0500E7BC0F /* earth-specular.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 87B247C51E96C75D00A2EAA7 /* earth-specular.jpg */; };
 		87E73760244FAF3A00E7BC0F /* SwiftGlobe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B247FD1E96D5F700A2EAA7 /* SwiftGlobe.swift */; };
 		87E73762244FAF3A00E7BC0F /* GlowingMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E736F1244F4C2D00E7BC0F /* GlowingMarker.swift */; };
-		C94A054F2C0E79FE0094E8A0 /* SwiftAstro in Resources */ = {isa = PBXBuildFile; fileRef = C94A054E2C0E79FE0094E8A0 /* SwiftAstro */; };
-		C94A05512C0E7A4A0094E8A0 /* SwiftAstro in Frameworks */ = {isa = PBXBuildFile; productRef = C94A05502C0E7A4A0094E8A0 /* SwiftAstro */; };
+		C94A05AE2C0E81F00094E8A0 /* SwiftAstro in Frameworks */ = {isa = PBXBuildFile; productRef = C94A05AD2C0E81F00094E8A0 /* SwiftAstro */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -176,7 +175,6 @@
 		87E7370D244F83E500E7BC0F /* earth-emissive.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "earth-emissive.jpg"; sourceTree = "<group>"; };
 		87E7373E244FAC9000E7BC0F /* SwiftGlobe-AR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftGlobe-AR.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87E955CF1EC3897F007496A9 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
-		C94A054E2C0E79FE0094E8A0 /* SwiftAstro */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SwiftAstro; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,7 +196,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C94A05512C0E7A4A0094E8A0 /* SwiftAstro in Frameworks */,
+				C94A05AE2C0E81F00094E8A0 /* SwiftAstro in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,7 +354,6 @@
 		C9CB9B3C2C0D0D6600997F05 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				C94A054E2C0E79FE0094E8A0 /* SwiftAstro */,
 			);
 			path = Packages;
 			sourceTree = "<group>";
@@ -429,7 +426,7 @@
 			);
 			name = "SwiftGlobe-iOS";
 			packageProductDependencies = (
-				C94A05502C0E7A4A0094E8A0 /* SwiftAstro */,
+				C94A05AD2C0E81F00094E8A0 /* SwiftAstro */,
 			);
 			productName = SwiftGlobe;
 			productReference = 87B2478F1E96C20B00A2EAA7 /* SwiftGlobe-iOS.app */;
@@ -521,6 +518,7 @@
 			);
 			mainGroup = 87B247861E96C20B00A2EAA7;
 			packageReferences = (
+				C94A05AC2C0E81F00094E8A0 /* XCLocalSwiftPackageReference "Packages/SwiftAstro" */,
 			);
 			productRefGroup = 87B247901E96C20B00A2EAA7 /* Products */;
 			projectDirPath = "";
@@ -608,7 +606,6 @@
 				87B247C91E96C75D00A2EAA7 /* earth-specular.jpg in Resources */,
 				87A3DA9D2450DC7700D772B9 /* metalness.png in Resources */,
 				87B2481C1E97112200A2EAA7 /* whiteGlow-32x32.png in Resources */,
-				C94A054F2C0E79FE0094E8A0 /* SwiftAstro in Resources */,
 				87ACA58A1EC3BEA9002C6964 /* eso0932a_top.png in Resources */,
 				87E7370E244F83E500E7BC0F /* earth-emissive.jpg in Resources */,
 			);
@@ -1215,8 +1212,15 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		C94A05AC2C0E81F00094E8A0 /* XCLocalSwiftPackageReference "Packages/SwiftAstro" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/SwiftAstro;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
-		C94A05502C0E7A4A0094E8A0 /* SwiftAstro */ = {
+		C94A05AD2C0E81F00094E8A0 /* SwiftAstro */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftAstro;
 		};
