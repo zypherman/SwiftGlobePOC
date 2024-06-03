@@ -93,6 +93,7 @@ class SwiftGlobe: ObservableObject {
         case dayNightTerminator
     }
     
+    // Fires every 60 seconds to update the position of the sun
     private func startPositionUpdateTimer() {
         updateTimer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(updateSunPosition), userInfo: nil, repeats: true)
     }
@@ -208,9 +209,9 @@ class SwiftGlobe: ObservableObject {
         }
         
         // ENABLE yellow dot
-        let sunMarker = GlowingMarker(lat: lat, lon: long, altitude: kGlobeRadius, markerZindex: 0, style: .dot, name: kSunMarkerName)
+//        let sunMarker = GlowingMarker(lat: lat, lon: long, altitude: kGlobeRadius, markerZindex: 0, style: .dot, name: kSunMarkerName)
         // DISABLE no dot
-//        let sunMarker = GlowingMarker(lat: lat, lon: long, altitude: kGlobeRadius, markerZindex: 0, style: .beam(UIColor.clear), name: kSunMarkerName)
+        let sunMarker = GlowingMarker(lat: lat, lon: long, altitude: kGlobeRadius, markerZindex: 0, style: .beam(UIColor.clear), name: kSunMarkerName)
         
         // ENABLE or disable the pulse animation
 //        sunMarker.addPulseAnimation()
