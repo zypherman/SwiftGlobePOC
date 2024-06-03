@@ -101,6 +101,7 @@
 		87E73760244FAF3A00E7BC0F /* SwiftGlobe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B247FD1E96D5F700A2EAA7 /* SwiftGlobe.swift */; };
 		87E73762244FAF3A00E7BC0F /* GlowingMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E736F1244F4C2D00E7BC0F /* GlowingMarker.swift */; };
 		C94A054F2C0E79FE0094E8A0 /* SwiftAstro in Resources */ = {isa = PBXBuildFile; fileRef = C94A054E2C0E79FE0094E8A0 /* SwiftAstro */; };
+		C94A05512C0E7A4A0094E8A0 /* SwiftAstro in Frameworks */ = {isa = PBXBuildFile; productRef = C94A05502C0E7A4A0094E8A0 /* SwiftAstro */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -197,6 +198,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C94A05512C0E7A4A0094E8A0 /* SwiftAstro in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +429,7 @@
 			);
 			name = "SwiftGlobe-iOS";
 			packageProductDependencies = (
+				C94A05502C0E7A4A0094E8A0 /* SwiftAstro */,
 			);
 			productName = SwiftGlobe;
 			productReference = 87B2478F1E96C20B00A2EAA7 /* SwiftGlobe-iOS.app */;
@@ -1211,6 +1214,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C94A05502C0E7A4A0094E8A0 /* SwiftAstro */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwiftAstro;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 87B247871E96C20B00A2EAA7 /* Project object */;
 }
