@@ -37,20 +37,14 @@ class GlowingMarker {
     
     enum Style {
         case dot
-#if os(watchOS)
-        case beam(Color)
-#elseif os(macOS)
-        case beam(NSColor)
-#else
         case beam(UIColor)
-#endif
         case ribbon
     }
     
     // The SceneKit node for this point (must be added to the scene!)
     internal var node : SCNNode!
     
-    init(lat: Float, lon: Float, altitude:Float, markerZindex: Int, style: Style) {
+    init(lat: Float, lon: Float, altitude:Float, markerZindex: Int, style: Style, name: String) {
         latitude = lat
         longitude = lon
         
@@ -137,7 +131,6 @@ class GlowingMarker {
             let vertexSource = SCNGeometrySource(vertices: vertices)
             let normalSource = SCNGeometrySource(normals: normals)
             
-            
             // now make a geometryElement from them
             let indices:[Int32] = [0, 1, 2, 3, 4, 5]
             let element = SCNGeometryElement(indices: indices, primitiveType: .triangles)
@@ -147,26 +140,15 @@ class GlowingMarker {
             // finally put it into the geometry
             geometry = SCNGeometry(sources: [vertexSource, normalSource], elements: [element])
             axisToPointOutward = SCNVector3(0,0,-1)
-
-#if os(watchOS)
-            let color = Color.yellow
-#elseif os(macOS)
-            let color = NSColor.yellow
-#else
-            let color = UIColor.yellow
-#endif
+            let color = UIColor.clear
             geometry.firstMaterial!.diffuse.contents = color
             geometry.firstMaterial!.diffuse.intensity = 8.0
             geometry.firstMaterial!.emission.contents = color
             geometry.firstMaterial!.emission.intensity = 12.0
-//            geometry.firstMaterial!.transparent.contents = color
-//            geometry.firstMaterial!.transparency = 0.01
-//
-//            geometry.firstMaterial!.emission.contents = color
-//            geometry.firstMaterial!.emission.intensity = 12.0
         }
         
-        node = SCNNode(geometry: geometry )
+        node = SCNNode(geometry: geometry)
+        node.name = name
         node.castsShadow = false
         
         let pos = SCNVector3(x: sceneKitX, y: sceneKitY, z: sceneKitZ )
@@ -175,12 +157,9 @@ class GlowingMarker {
         if let axisToPointOutward = axisToPointOutward {
             node.look(at: SCNVector3(0,0,0), up: SCNVector3(0,0,1), localFront: axisToPointOutward)
         }
-
     }
     
     func addPulseAnimation() {
-// CoreAnimation isn't available on watchOS :-(
-#if os(iOS) || os(tvOS) || os(macOS)
         let animation = CABasicAnimation(keyPath: "scale")
         animation.fromValue = SCNVector3(x: Float(0.5), y: Float(0.5), z: Float(0.5))
         animation.toValue = SCNVector3(x: Float(3.0), y: Float(3.0), z: Float(3.0))
@@ -189,7 +168,5 @@ class GlowingMarker {
         animation.repeatCount = Float.infinity
         animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
         node.addAnimation(animation, forKey: "throb")
-#endif
     }
-    
 }

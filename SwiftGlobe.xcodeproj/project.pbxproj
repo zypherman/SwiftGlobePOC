@@ -9,10 +9,6 @@
 /* Begin PBXBuildFile section */
 		8714AC7D1E9803410069A8F1 /* earth-bump.png in Resources */ = {isa = PBXBuildFile; fileRef = 8714AC791E9803410069A8F1 /* earth-bump.png */; };
 		8714AC811E98034B0069A8F1 /* earth-bump.png in Resources */ = {isa = PBXBuildFile; fileRef = 8714AC791E9803410069A8F1 /* earth-bump.png */; };
-		877FBC9D1E9D784200407209 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877FBC9C1E9D784200407209 /* AppDelegate.swift */; };
-		877FBC9F1E9D784200407209 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877FBC9E1E9D784200407209 /* ViewController.swift */; };
-		877FBCA21E9D784200407209 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 877FBCA01E9D784200407209 /* Main.storyboard */; };
-		877FBCA41E9D784200407209 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 877FBCA31E9D784200407209 /* Assets.xcassets */; };
 		877FBCA91E9D789900407209 /* SwiftGlobe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B247FD1E96D5F700A2EAA7 /* SwiftGlobe.swift */; };
 		877FBCAA1E9D79AA00407209 /* whiteGlow-32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 87B2481B1E97112200A2EAA7 /* whiteGlow-32x32.png */; };
 		877FBCAB1E9D79AA00407209 /* yellowGlow-32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 87B2481E1E9711E600A2EAA7 /* yellowGlow-32x32.png */; };
@@ -78,10 +74,6 @@
 		87B2479A1E96C20B00A2EAA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87B247991E96C20B00A2EAA7 /* Assets.xcassets */; };
 		87B2479D1E96C20B00A2EAA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87B2479B1E96C20B00A2EAA7 /* LaunchScreen.storyboard */; };
 		87B247C91E96C75D00A2EAA7 /* earth-specular.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 87B247C51E96C75D00A2EAA7 /* earth-specular.jpg */; };
-		87B247D21E96D56F00A2EAA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B247D11E96D56F00A2EAA7 /* AppDelegate.swift */; };
-		87B247D41E96D56F00A2EAA7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B247D31E96D56F00A2EAA7 /* ViewController.swift */; };
-		87B247D61E96D56F00A2EAA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87B247D51E96D56F00A2EAA7 /* Assets.xcassets */; };
-		87B247D91E96D56F00A2EAA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87B247D71E96D56F00A2EAA7 /* Main.storyboard */; };
 		87B247FB1E96D5D700A2EAA7 /* earth-specular.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 87B247C51E96C75D00A2EAA7 /* earth-specular.jpg */; };
 		87B247FE1E96D5F700A2EAA7 /* SwiftGlobe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B247FD1E96D5F700A2EAA7 /* SwiftGlobe.swift */; };
 		87B247FF1E96D67900A2EAA7 /* SwiftGlobe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B247FD1E96D5F700A2EAA7 /* SwiftGlobe.swift */; };
@@ -92,18 +84,9 @@
 		87E736F2244F4C2D00E7BC0F /* GlowingMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E736F1244F4C2D00E7BC0F /* GlowingMarker.swift */; };
 		87E736F3244F4C2D00E7BC0F /* GlowingMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E736F1244F4C2D00E7BC0F /* GlowingMarker.swift */; };
 		87E736F4244F4C2D00E7BC0F /* GlowingMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E736F1244F4C2D00E7BC0F /* GlowingMarker.swift */; };
-		87E736F6244F528700E7BC0F /* SwiftGlobe+DemoMarkers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E736F5244F528700E7BC0F /* SwiftGlobe+DemoMarkers.swift */; };
-		87E736F7244F528700E7BC0F /* SwiftGlobe+DemoMarkers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E736F5244F528700E7BC0F /* SwiftGlobe+DemoMarkers.swift */; };
-		87E736F8244F528700E7BC0F /* SwiftGlobe+DemoMarkers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E736F5244F528700E7BC0F /* SwiftGlobe+DemoMarkers.swift */; };
 		87E7370E244F83E500E7BC0F /* earth-emissive.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 87E7370D244F83E500E7BC0F /* earth-emissive.jpg */; };
 		87E7370F244F83E500E7BC0F /* earth-emissive.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 87E7370D244F83E500E7BC0F /* earth-emissive.jpg */; };
 		87E73710244F83E500E7BC0F /* earth-emissive.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 87E7370D244F83E500E7BC0F /* earth-emissive.jpg */; };
-		87E73741244FAC9000E7BC0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E73740244FAC9000E7BC0F /* AppDelegate.swift */; };
-		87E73743244FAC9000E7BC0F /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 87E73742244FAC9000E7BC0F /* art.scnassets */; };
-		87E73745244FAC9000E7BC0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E73744244FAC9000E7BC0F /* ViewController.swift */; };
-		87E73748244FAC9000E7BC0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87E73746244FAC9000E7BC0F /* Main.storyboard */; };
-		87E7374A244FAC9400E7BC0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87E73749244FAC9400E7BC0F /* Assets.xcassets */; };
-		87E7374D244FAC9400E7BC0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87E7374B244FAC9400E7BC0F /* LaunchScreen.storyboard */; };
 		87E73752244FAD0500E7BC0F /* whiteGlow-32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 87B2481B1E97112200A2EAA7 /* whiteGlow-32x32.png */; };
 		87E73753244FAD0500E7BC0F /* yellowGlow-32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 87B2481E1E9711E600A2EAA7 /* yellowGlow-32x32.png */; };
 		87E73754244FAD0500E7BC0F /* earth-bump.png in Resources */ = {isa = PBXBuildFile; fileRef = 8714AC791E9803410069A8F1 /* earth-bump.png */; };
@@ -116,9 +99,8 @@
 		87E7375E244FAD0500E7BC0F /* eso0932a_top.png in Resources */ = {isa = PBXBuildFile; fileRef = 87ACA57A1EC3BEA9002C6964 /* eso0932a_top.png */; };
 		87E7375F244FAD0500E7BC0F /* earth-specular.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 87B247C51E96C75D00A2EAA7 /* earth-specular.jpg */; };
 		87E73760244FAF3A00E7BC0F /* SwiftGlobe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B247FD1E96D5F700A2EAA7 /* SwiftGlobe.swift */; };
-		87E73761244FAF3A00E7BC0F /* SwiftGlobe+DemoMarkers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E736F5244F528700E7BC0F /* SwiftGlobe+DemoMarkers.swift */; };
 		87E73762244FAF3A00E7BC0F /* GlowingMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E736F1244F4C2D00E7BC0F /* GlowingMarker.swift */; };
-		C94A05482C0D36570094E8A0 /* SwiftAstro in Frameworks */ = {isa = PBXBuildFile; productRef = C94A05472C0D36570094E8A0 /* SwiftAstro */; };
+		C94A054F2C0E79FE0094E8A0 /* SwiftAstro in Resources */ = {isa = PBXBuildFile; fileRef = C94A054E2C0E79FE0094E8A0 /* SwiftAstro */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,11 +130,6 @@
 /* Begin PBXFileReference section */
 		8714AC791E9803410069A8F1 /* earth-bump.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "earth-bump.png"; sourceTree = "<group>"; };
 		877FBC9A1E9D784200407209 /* SwiftGlobe-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftGlobe-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		877FBC9C1E9D784200407209 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		877FBC9E1E9D784200407209 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		877FBCA11E9D784200407209 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		877FBCA31E9D784200407209 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		877FBCA51E9D784200407209 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87A3DA9B2450DC7700D772B9 /* metalness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metalness.png; sourceTree = "<group>"; };
 		87A3DA9C2450DC7700D772B9 /* roughness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roughness.png; sourceTree = "<group>"; };
 		87A3DAA52450DCFD00D772B9 /* world-large.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "world-large.jpg"; sourceTree = "<group>"; };
@@ -191,26 +168,14 @@
 		87B2479E1E96C20B00A2EAA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87B247C51E96C75D00A2EAA7 /* earth-specular.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "earth-specular.jpg"; sourceTree = "<group>"; };
 		87B247CF1E96D56F00A2EAA7 /* SwiftGlobe-MacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftGlobe-MacOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		87B247D11E96D56F00A2EAA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		87B247D31E96D56F00A2EAA7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		87B247D51E96D56F00A2EAA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		87B247D81E96D56F00A2EAA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		87B247DA1E96D56F00A2EAA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87B247FD1E96D5F700A2EAA7 /* SwiftGlobe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftGlobe.swift; sourceTree = "<group>"; };
 		87B2481B1E97112200A2EAA7 /* whiteGlow-32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteGlow-32x32.png"; sourceTree = "<group>"; };
 		87B2481E1E9711E600A2EAA7 /* yellowGlow-32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yellowGlow-32x32.png"; sourceTree = "<group>"; };
 		87E736F1244F4C2D00E7BC0F /* GlowingMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowingMarker.swift; sourceTree = "<group>"; };
-		87E736F5244F528700E7BC0F /* SwiftGlobe+DemoMarkers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftGlobe+DemoMarkers.swift"; sourceTree = "<group>"; };
 		87E7370D244F83E500E7BC0F /* earth-emissive.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "earth-emissive.jpg"; sourceTree = "<group>"; };
 		87E7373E244FAC9000E7BC0F /* SwiftGlobe-AR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftGlobe-AR.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		87E73740244FAC9000E7BC0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		87E73742244FAC9000E7BC0F /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
-		87E73744244FAC9000E7BC0F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		87E73747244FAC9000E7BC0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		87E73749244FAC9400E7BC0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		87E7374C244FAC9400E7BC0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		87E7374E244FAC9400E7BC0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87E955CF1EC3897F007496A9 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
+		C94A054E2C0E79FE0094E8A0 /* SwiftAstro */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SwiftAstro; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,7 +197,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C94A05482C0D36570094E8A0 /* SwiftAstro in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,18 +217,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		877FBC9B1E9D784200407209 /* SwiftGlobe-tvOS */ = {
-			isa = PBXGroup;
-			children = (
-				877FBC9C1E9D784200407209 /* AppDelegate.swift */,
-				877FBC9E1E9D784200407209 /* ViewController.swift */,
-				877FBCA01E9D784200407209 /* Main.storyboard */,
-				877FBCA31E9D784200407209 /* Assets.xcassets */,
-				877FBCA51E9D784200407209 /* Info.plist */,
-			);
-			path = "SwiftGlobe-tvOS";
-			sourceTree = "<group>";
-		};
 		87A3DAAF2450DDE300D772B9 /* earth-watch */ = {
 			isa = PBXGroup;
 			children = (
@@ -311,9 +263,6 @@
 				87E955CF1EC3897F007496A9 /* readme.md */,
 				87E736F0244F4BD600E7BC0F /* src */,
 				87B247911E96C20B00A2EAA7 /* SwiftGlobe-iOS */,
-				87B247D01E96D56F00A2EAA7 /* SwiftGlobe-MacOS */,
-				877FBC9B1E9D784200407209 /* SwiftGlobe-tvOS */,
-				87E7373F244FAC9000E7BC0F /* SwiftGlobe-AR */,
 				87AEE29B2A327577000F4A34 /* SwiftGlobe-Watch Watch App */,
 				87B247901E96C20B00A2EAA7 /* Products */,
 				C9CB9B392C0D03B300997F05 /* Frameworks */,
@@ -385,41 +334,14 @@
 			path = earth;
 			sourceTree = "<group>";
 		};
-		87B247D01E96D56F00A2EAA7 /* SwiftGlobe-MacOS */ = {
-			isa = PBXGroup;
-			children = (
-				87B247D11E96D56F00A2EAA7 /* AppDelegate.swift */,
-				87B247D31E96D56F00A2EAA7 /* ViewController.swift */,
-				87B247D51E96D56F00A2EAA7 /* Assets.xcassets */,
-				87B247D71E96D56F00A2EAA7 /* Main.storyboard */,
-				87B247DA1E96D56F00A2EAA7 /* Info.plist */,
-			);
-			path = "SwiftGlobe-MacOS";
-			sourceTree = "<group>";
-		};
 		87E736F0244F4BD600E7BC0F /* src */ = {
 			isa = PBXGroup;
 			children = (
 				87B247FD1E96D5F700A2EAA7 /* SwiftGlobe.swift */,
-				87E736F5244F528700E7BC0F /* SwiftGlobe+DemoMarkers.swift */,
 				87E736F1244F4C2D00E7BC0F /* GlowingMarker.swift */,
 				87B247C01E96C75D00A2EAA7 /* Resources */,
 			);
 			path = src;
-			sourceTree = "<group>";
-		};
-		87E7373F244FAC9000E7BC0F /* SwiftGlobe-AR */ = {
-			isa = PBXGroup;
-			children = (
-				87E73740244FAC9000E7BC0F /* AppDelegate.swift */,
-				87E73742244FAC9000E7BC0F /* art.scnassets */,
-				87E73744244FAC9000E7BC0F /* ViewController.swift */,
-				87E73746244FAC9000E7BC0F /* Main.storyboard */,
-				87E73749244FAC9400E7BC0F /* Assets.xcassets */,
-				87E7374B244FAC9400E7BC0F /* LaunchScreen.storyboard */,
-				87E7374E244FAC9400E7BC0F /* Info.plist */,
-			);
-			path = "SwiftGlobe-AR";
 			sourceTree = "<group>";
 		};
 		C9CB9B392C0D03B300997F05 /* Frameworks */ = {
@@ -432,6 +354,7 @@
 		C9CB9B3C2C0D0D6600997F05 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				C94A054E2C0E79FE0094E8A0 /* SwiftAstro */,
 			);
 			path = Packages;
 			sourceTree = "<group>";
@@ -504,7 +427,6 @@
 			);
 			name = "SwiftGlobe-iOS";
 			packageProductDependencies = (
-				C94A05472C0D36570094E8A0 /* SwiftAstro */,
 			);
 			productName = SwiftGlobe;
 			productReference = 87B2478F1E96C20B00A2EAA7 /* SwiftGlobe-iOS.app */;
@@ -596,7 +518,6 @@
 			);
 			mainGroup = 87B247861E96C20B00A2EAA7;
 			packageReferences = (
-				C94A05462C0D36570094E8A0 /* XCRemoteSwiftPackageReference "SwiftAstro" */,
 			);
 			productRefGroup = 87B247901E96C20B00A2EAA7 /* Products */;
 			projectDirPath = "";
@@ -625,8 +546,6 @@
 				87ACA5891EC3BEA9002C6964 /* eso0932a_right.png in Resources */,
 				877FBCB21E9D79AA00407209 /* earth-specular.jpg in Resources */,
 				87E73710244F83E500E7BC0F /* earth-emissive.jpg in Resources */,
-				877FBCA41E9D784200407209 /* Assets.xcassets in Resources */,
-				877FBCA21E9D784200407209 /* Main.storyboard in Resources */,
 				877FBCAC1E9D79AA00407209 /* earth-bump.png in Resources */,
 				87ACA58C1EC3BEA9002C6964 /* eso0932a_top.png in Resources */,
 				877FBCAA1E9D79AA00407209 /* whiteGlow-32x32.png in Resources */,
@@ -686,6 +605,7 @@
 				87B247C91E96C75D00A2EAA7 /* earth-specular.jpg in Resources */,
 				87A3DA9D2450DC7700D772B9 /* metalness.png in Resources */,
 				87B2481C1E97112200A2EAA7 /* whiteGlow-32x32.png in Resources */,
+				C94A054F2C0E79FE0094E8A0 /* SwiftAstro in Resources */,
 				87ACA58A1EC3BEA9002C6964 /* eso0932a_top.png in Resources */,
 				87E7370E244F83E500E7BC0F /* earth-emissive.jpg in Resources */,
 			);
@@ -695,7 +615,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87B247D61E96D56F00A2EAA7 /* Assets.xcassets in Resources */,
 				87ACA57C1EC3BEA9002C6964 /* eso0932a_back.png in Resources */,
 				87ACA5851EC3BEA9002C6964 /* eso0932a_left.png in Resources */,
 				87A3DAA22450DC7700D772B9 /* roughness.png in Resources */,
@@ -707,7 +626,6 @@
 				87A3DAA82450DCFE00D772B9 /* world-large.jpg in Resources */,
 				87B248201E9711E600A2EAA7 /* yellowGlow-32x32.png in Resources */,
 				87ACA5821EC3BEA9002C6964 /* eso0932a_front.png in Resources */,
-				87B247D91E96D56F00A2EAA7 /* Main.storyboard in Resources */,
 				87A3DA9E2450DC7700D772B9 /* metalness.png in Resources */,
 				8714AC811E98034B0069A8F1 /* earth-bump.png in Resources */,
 				87ACA58B1EC3BEA9002C6964 /* eso0932a_top.png in Resources */,
@@ -721,20 +639,16 @@
 			files = (
 				87E73756244FAD0500E7BC0F /* earth-emissive.jpg in Resources */,
 				87E73759244FAD0500E7BC0F /* eso0932a_back.png in Resources */,
-				87E73743244FAC9000E7BC0F /* art.scnassets in Resources */,
 				87A3DAAE2450DCFE00D772B9 /* world-ultra.jpg in Resources */,
 				87E7375C244FAD0500E7BC0F /* eso0932a_left.png in Resources */,
 				87E7375A244FAD0500E7BC0F /* eso0932a_bottom.png in Resources */,
 				87A3DAA02450DC7700D772B9 /* metalness.png in Resources */,
 				87A3DAAA2450DCFE00D772B9 /* world-large.jpg in Resources */,
-				87E7374D244FAC9400E7BC0F /* LaunchScreen.storyboard in Resources */,
 				87E7375D244FAD0500E7BC0F /* eso0932a_right.png in Resources */,
 				87A3DAA42450DC7700D772B9 /* roughness.png in Resources */,
-				87E7374A244FAC9400E7BC0F /* Assets.xcassets in Resources */,
 				87E73752244FAD0500E7BC0F /* whiteGlow-32x32.png in Resources */,
 				87E7375F244FAD0500E7BC0F /* earth-specular.jpg in Resources */,
 				87E73754244FAD0500E7BC0F /* earth-bump.png in Resources */,
-				87E73748244FAC9000E7BC0F /* Main.storyboard in Resources */,
 				87E7375B244FAD0500E7BC0F /* eso0932a_front.png in Resources */,
 				87E73753244FAD0500E7BC0F /* yellowGlow-32x32.png in Resources */,
 				87E7375E244FAD0500E7BC0F /* eso0932a_top.png in Resources */,
@@ -749,9 +663,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				877FBCA91E9D789900407209 /* SwiftGlobe.swift in Sources */,
-				87E736F8244F528700E7BC0F /* SwiftGlobe+DemoMarkers.swift in Sources */,
-				877FBC9F1E9D784200407209 /* ViewController.swift in Sources */,
-				877FBC9D1E9D784200407209 /* AppDelegate.swift in Sources */,
 				87E736F4244F4C2D00E7BC0F /* GlowingMarker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -772,7 +683,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				87B247FE1E96D5F700A2EAA7 /* SwiftGlobe.swift in Sources */,
-				87E736F6244F528700E7BC0F /* SwiftGlobe+DemoMarkers.swift in Sources */,
 				87B247951E96C20B00A2EAA7 /* ViewController.swift in Sources */,
 				87B247931E96C20B00A2EAA7 /* AppDelegate.swift in Sources */,
 				87E736F2244F4C2D00E7BC0F /* GlowingMarker.swift in Sources */,
@@ -784,9 +694,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				87B247FF1E96D67900A2EAA7 /* SwiftGlobe.swift in Sources */,
-				87E736F7244F528700E7BC0F /* SwiftGlobe+DemoMarkers.swift in Sources */,
-				87B247D41E96D56F00A2EAA7 /* ViewController.swift in Sources */,
-				87B247D21E96D56F00A2EAA7 /* AppDelegate.swift in Sources */,
 				87E736F3244F4C2D00E7BC0F /* GlowingMarker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -797,9 +704,6 @@
 			files = (
 				87E73760244FAF3A00E7BC0F /* SwiftGlobe.swift in Sources */,
 				87E73762244FAF3A00E7BC0F /* GlowingMarker.swift in Sources */,
-				87E73745244FAC9000E7BC0F /* ViewController.swift in Sources */,
-				87E73761244FAF3A00E7BC0F /* SwiftGlobe+DemoMarkers.swift in Sources */,
-				87E73741244FAC9000E7BC0F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -814,14 +718,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		877FBCA01E9D784200407209 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				877FBCA11E9D784200407209 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		87B247961E96C20B00A2EAA7 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -834,30 +730,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				87B2479C1E96C20B00A2EAA7 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		87B247D71E96D56F00A2EAA7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				87B247D81E96D56F00A2EAA7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		87E73746244FAC9000E7BC0F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				87E73747244FAC9000E7BC0F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		87E7374B244FAC9400E7BC0F /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				87E7374C244FAC9400E7BC0F /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1339,25 +1211,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		C94A05462C0D36570094E8A0 /* XCRemoteSwiftPackageReference "SwiftAstro" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/zypherman/SwiftAstro.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		C94A05472C0D36570094E8A0 /* SwiftAstro */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C94A05462C0D36570094E8A0 /* XCRemoteSwiftPackageReference "SwiftAstro" */;
-			productName = SwiftAstro;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 87B247871E96C20B00A2EAA7 /* Project object */;
 }
