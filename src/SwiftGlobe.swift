@@ -6,6 +6,7 @@
 //  Copyright © 2017 David Mojdehi. All rights reserved.
 //
 
+import Combine
 import Foundation
 import SceneKit
 #if os(watchOS)
@@ -25,7 +26,7 @@ let kCameraAltitude = Float(2.2)
 let kGlowPointAltitude = Float(kGlobeRadius * 1.001)
 let kDistanceToTheSun = Float(300)
 
-let kDefaultCameraFov = CGFloat(60.0)
+let kDefaultCameraFov = CGFloat(40.0)
 let kGlowPointWidth = CGFloat(0.025)
 let kMinLatLonPerUnity = -0.1
 let kMaxLatLonPerUnity = 1.1
@@ -56,7 +57,10 @@ let kDaysInAYear = 365.0
 
 let kAffectedBySpring = 1 << 1
 
-let kSunMarkerName = "sunMarker"
+let kSunMarkerName = "sun_marker"
+let kOriginMarkerName = "origin_maker"
+let kAirplaneMarkerName = "airplane_marker"
+let kDestinationMarkerName = "destination_marker"
 
 class SwiftGlobe: ObservableObject {
     
@@ -86,11 +90,25 @@ class SwiftGlobe: ObservableObject {
     @Published var sunLong: Float = 0.0
     @Published var sunLat: Float = 0.0
     
+    var flightInfoModel: FlightInfoModel?
+    
     var updateTimer: Timer?
     
     enum UpDownAlignment {
         case poles
         case dayNightTerminator
+    }
+    
+    private var subscriptions = Set<AnyCancellable>()
+    
+    func setupFlightInfo(with flightInfoPublisher: some Publisher<FlightInfo?, Never>) {
+        flightInfoPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { flightInfo in
+                if let flightInfo {
+                    self.update(flightInfo)
+                }
+            }.store(in: &self.subscriptions)
     }
     
     // Fires every 60 seconds to update the position of the sun
@@ -208,14 +226,9 @@ class SwiftGlobe: ObservableObject {
             existingMarker.removeFromParentNode()
         }
         
-        // ENABLE yellow dot
-//        let sunMarker = GlowingMarker(lat: lat, lon: long, altitude: kGlobeRadius, markerZindex: 0, style: .dot, name: kSunMarkerName)
-        // DISABLE no dot
         let sunMarker = GlowingMarker(lat: lat, lon: long, altitude: kGlobeRadius, markerZindex: 0, style: .beam(UIColor.clear), name: kSunMarkerName)
         
-        // ENABLE or disable the pulse animation
-//        sunMarker.addPulseAnimation()
-        self.addMarker(sunMarker)
+        self.addMarker(sunMarker, checkForExisting: false)
     }
     
     @objc func updateSunPosition() {
@@ -227,6 +240,23 @@ class SwiftGlobe: ObservableObject {
             sun.position = sunMarker.position
         }
         sun.look(at: SCNVector3(0,0,0), up: SCNVector3(0,0,1), localFront: SCNVector3(0,0,-3))
+    }
+    
+    private func update(_ flightInfo: FlightInfo) {
+        if let originAirport = flightInfo.originAirport {
+            let originMarker = GlowingMarker(lat: originAirport.latitude, lon: originAirport.longitude, altitude: kGlobeRadius, markerZindex: 0, style: .dot(.origin), name: kOriginMarkerName)
+            addMarker(originMarker, checkForExisting: true)
+        }
+        
+        if let destinationAirport = flightInfo.destinationAirport {
+            let destinationMarker = GlowingMarker(lat: destinationAirport.latitude, lon: destinationAirport.longitude, altitude: kGlobeRadius, markerZindex: 0, style: .dot(.destination), name: kOriginMarkerName)
+            addMarker(destinationMarker, checkForExisting: true)
+        }
+        
+        let airplaneMarker = GlowingMarker(lat: flightInfo.latitude, lon: flightInfo.longitude, altitude: kGlobeRadius, markerZindex: 0, style: .dot(.airplane), name: kOriginMarkerName)
+        addMarker(airplaneMarker, checkForExisting: true)
+        
+        focusOnLatLon(flightInfo.latitude, flightInfo.longitude)
     }
     
     // Calculate how much to tilt the earth for the current season
@@ -241,10 +271,13 @@ class SwiftGlobe: ObservableObject {
         return tiltXRadians
     }
     
-    public func addMarker(_ marker: GlowingMarker) {
-        // for now, just add directly to the scene
-        // (in the future we could track these separately)
-        globe.addChildNode(marker.node)
+    public func addMarker(_ marker: GlowingMarker, checkForExisting: Bool) {
+        if checkForExisting, let existingMarker = globe.childNode(withName: kOriginMarkerName, recursively: true) {
+            print("Updating position of existing marker")
+            existingMarker.position = marker.node.position
+        } else {
+            globe.addChildNode(marker.node)
+        }
     }
     
     internal func setupInSceneView(_ v: SCNView, forARKit : Bool, enableAutomaticSpin: Bool) {
@@ -304,6 +337,12 @@ class SwiftGlobe: ObservableObject {
         cameraNode.light = ambientLight
         cameraNode.camera = camera
         scene.rootNode.addChildNode(cameraNode)
+        
+        if enableAutomaticSpin {
+            let spinRotation = SCNAction.rotate(by: 2 * .pi, around: SCNVector3(0, 1, 0), duration: kGlobeDefaultRotationSpeedSeconds)
+            let spinAction = SCNAction.repeatForever(spinRotation)
+            globe.runAction(spinAction)
+        }
     }
     
     private func addPanGestures() {}
@@ -391,7 +430,11 @@ class SwiftGlobe: ObservableObject {
     public func focusOnLatLon(_ lat: Float, _ lon: Float) {
         globe.removeAllActions()
         userTiltRadians = lat / 180.0 * .pi
+        
+        userTiltRadians = userTiltRadians + 150
         userRotationRadians = lon / -180 * .pi
+        
+//        userRotationRadians = userRotationRadians + 150
         applyUserTiltAndRotation()
         let axisAngle = SCNVector4(0, 1, 0, 0 )
         let spinTo = SCNAction.rotate(toAxisAngle: axisAngle, duration: 0.1)
@@ -436,77 +479,6 @@ extension SCNNode {
         for node in nodes {
             currentNode.addChildNode(node)
             currentNode = node
-        }
-    }
-}
-
-// The SwiftUI view that contains the SceneView and the GroupBox
-struct GlobeView: View {
-    @StateObject var globe = SwiftGlobe(alignment: .poles)
-    @State private var userAgreed = false
-    
-    let agreementText = "This is the end-user agreement text that will be displayed inside the GroupBox."
-    
-    var body: some View {
-        ZStack {
-            // autoenablesDefaultLighting
-            SceneView(scene: globe.scene, options: [.allowsCameraControl])
-                .edgesIgnoringSafeArea(.all)
-            VStack {
-//                Slider(value: $globe.sunX, in: -500...500, step: 1) {
-//                    Text("Sun X Position")
-//                }
-//                Text("Sun X: \(globe.sunX)")
-//                
-//                Slider(value: $globe.sunY, in: -500...500, step: 1) {
-//                    Text("Sun Y Position")
-//                }
-//                Text("Sun Y: \(globe.sunY)")
-//                
-//                Slider(value: $globe.sunZ, in: -500...500, step: 1) {
-//                    Text("Sun Z Position")
-//                }
-//                Text("Sun Z: \(globe.sunZ)")
-//                
-//                Spacer()
-//                GroupBox(
-//                    label: Label("End-User Agreement", systemImage: "building.columns")
-//                ) {
-//                    ScrollView(.vertical, showsIndicators: true) {
-//                        Text(agreementText)
-//                            .font(.footnote)
-//                    }
-//                    .frame(height: 100)
-//                    Toggle(isOn: $userAgreed) {
-//                        Text("I agree to the above terms")
-//                    }
-//                }
-//                .padding()
-//                .background(
-//                    RoundedRectangle(cornerRadius: 10)
-//                        .fill(Color(UIColor.systemBackground))
-//                        .shadow(radius: 5)
-//                )
-//                .padding()
-            }
-        }
-        .onAppear {
-            globe.setupInSceneView(globe.gestureHost ?? SCNView(), forARKit: false, enableAutomaticSpin: false)
-        }
-    }
-}
-
-struct ContentView: View {
-    var body: some View {
-        GlobeView()
-    }
-}
-
-@main
-struct GlobeApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
         }
     }
 }

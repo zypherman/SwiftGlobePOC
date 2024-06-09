@@ -28,6 +28,12 @@ func -(left: CGPoint, right: CGSize) -> CGPoint {
     return CGPoint(x: left.x - right.width, y: left.y - right.height)
 }
 
+enum DotType {
+    case airplane // Blue
+    case origin // Green
+    case destination // Red
+}
+
 
 // code to encapsulate individual glow points
 // (extend this to get different glow effects)
@@ -36,7 +42,7 @@ class GlowingMarker {
     var longitude : Float = 0.0
     
     enum Style {
-        case dot
+        case dot(DotType)
         case beam(UIColor)
         case ribbon
     }
@@ -73,15 +79,25 @@ class GlowingMarker {
         // ... and the 'out' axis, which varies by geometry)
         let axisToPointOutward : SCNVector3?
         switch style {
-        case .dot:
+        case .dot(let type):
             geometry = SCNPlane(width: kGlowPointWidth, height: kGlowPointWidth)
             // when we point it, make sure it's upright (negative Z because it's 'bottom' should be visible?)
             axisToPointOutward = SCNVector3(0,0,-1)
             
-            geometry.firstMaterial!.diffuse.contents = "yellowGlow-32x32.png"
+            switch type {
+            case .airplane:
+                geometry.firstMaterial!.diffuse.contents = "blueGlow-32x32.png"
+                geometry.firstMaterial!.emission.contents = "blueGlow-32x32.png"
+            case .origin:
+                geometry.firstMaterial!.diffuse.contents = "greenGlow-32x32.png"
+                geometry.firstMaterial!.emission.contents = "greenGlow-32x32.png"
+            case .destination:
+                geometry.firstMaterial!.diffuse.contents = "redGlow-32x32.png"
+                geometry.firstMaterial!.emission.contents = "redGlow-32x32.png"
+            }
+            
             // appear a little washed out in daylight...
             geometry.firstMaterial!.diffuse.intensity = 0.2
-            geometry.firstMaterial!.emission.contents = "yellowGlow-32x32.png"
             // but brigheter in dark areas
             geometry.firstMaterial!.emission.intensity = 2.0
             //geometry.firstMaterial!.emission.intensity = 0.7

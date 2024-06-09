@@ -100,6 +100,13 @@
 		87E7375F244FAD0500E7BC0F /* earth-specular.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 87B247C51E96C75D00A2EAA7 /* earth-specular.jpg */; };
 		87E73760244FAF3A00E7BC0F /* SwiftGlobe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B247FD1E96D5F700A2EAA7 /* SwiftGlobe.swift */; };
 		87E73762244FAF3A00E7BC0F /* GlowingMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E736F1244F4C2D00E7BC0F /* GlowingMarker.swift */; };
+		C94456412C155F9B007A7B4F /* InflightService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94456402C155F9B007A7B4F /* InflightService.swift */; };
+		C94456472C156C5F007A7B4F /* FlightInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94456462C156C5F007A7B4F /* FlightInfoModel.swift */; };
+		C944564D2C157014007A7B4F /* GlobeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C944564C2C157014007A7B4F /* GlobeView.swift */; };
+		C94456552C157A5D007A7B4F /* blueGlow-32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C94456522C157A5D007A7B4F /* blueGlow-32x32.png */; };
+		C944565A2C157A5D007A7B4F /* greenGlow-32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C94456532C157A5D007A7B4F /* greenGlow-32x32.png */; };
+		C944565F2C157A5D007A7B4F /* redGlow-32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C94456542C157A5D007A7B4F /* redGlow-32x32.png */; };
+		C94456652C158545007A7B4F /* airports.json in Resources */ = {isa = PBXBuildFile; fileRef = C94456642C158545007A7B4F /* airports.json */; };
 		C94A05AE2C0E81F00094E8A0 /* SwiftAstro in Frameworks */ = {isa = PBXBuildFile; productRef = C94A05AD2C0E81F00094E8A0 /* SwiftAstro */; };
 /* End PBXBuildFile section */
 
@@ -175,6 +182,13 @@
 		87E7370D244F83E500E7BC0F /* earth-emissive.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "earth-emissive.jpg"; sourceTree = "<group>"; };
 		87E7373E244FAC9000E7BC0F /* SwiftGlobe-AR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftGlobe-AR.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87E955CF1EC3897F007496A9 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
+		C94456402C155F9B007A7B4F /* InflightService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InflightService.swift; sourceTree = "<group>"; };
+		C94456462C156C5F007A7B4F /* FlightInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightInfoModel.swift; sourceTree = "<group>"; };
+		C944564C2C157014007A7B4F /* GlobeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobeView.swift; sourceTree = "<group>"; };
+		C94456522C157A5D007A7B4F /* blueGlow-32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueGlow-32x32.png"; sourceTree = "<group>"; };
+		C94456532C157A5D007A7B4F /* greenGlow-32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greenGlow-32x32.png"; sourceTree = "<group>"; };
+		C94456542C157A5D007A7B4F /* redGlow-32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redGlow-32x32.png"; sourceTree = "<group>"; };
+		C94456642C158545007A7B4F /* airports.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = airports.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -298,6 +312,7 @@
 		87B247C01E96C75D00A2EAA7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C94456642C158545007A7B4F /* airports.json */,
 				87B247C11E96C75D00A2EAA7 /* images */,
 			);
 			path = Resources;
@@ -306,6 +321,9 @@
 		87B247C11E96C75D00A2EAA7 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				C94456522C157A5D007A7B4F /* blueGlow-32x32.png */,
+				C94456532C157A5D007A7B4F /* greenGlow-32x32.png */,
+				C94456542C157A5D007A7B4F /* redGlow-32x32.png */,
 				87B2481B1E97112200A2EAA7 /* whiteGlow-32x32.png */,
 				87B2481E1E9711E600A2EAA7 /* yellowGlow-32x32.png */,
 				87A3DAAF2450DDE300D772B9 /* earth-watch */,
@@ -340,6 +358,9 @@
 				87B247FD1E96D5F700A2EAA7 /* SwiftGlobe.swift */,
 				87E736F1244F4C2D00E7BC0F /* GlowingMarker.swift */,
 				87B247C01E96C75D00A2EAA7 /* Resources */,
+				C94456402C155F9B007A7B4F /* InflightService.swift */,
+				C94456462C156C5F007A7B4F /* FlightInfoModel.swift */,
+				C944564C2C157014007A7B4F /* GlobeView.swift */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -540,10 +561,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				87A3DAA92450DCFE00D772B9 /* world-large.jpg in Resources */,
+				C94456612C157A5D007A7B4F /* redGlow-32x32.png in Resources */,
 				87ACA5801EC3BEA9002C6964 /* eso0932a_bottom.png in Resources */,
 				87ACA5831EC3BEA9002C6964 /* eso0932a_front.png in Resources */,
 				87ACA5861EC3BEA9002C6964 /* eso0932a_left.png in Resources */,
 				87ACA57D1EC3BEA9002C6964 /* eso0932a_back.png in Resources */,
+				C94456572C157A5D007A7B4F /* blueGlow-32x32.png in Resources */,
+				C94456672C158545007A7B4F /* airports.json in Resources */,
 				87ACA5891EC3BEA9002C6964 /* eso0932a_right.png in Resources */,
 				877FBCB21E9D79AA00407209 /* earth-specular.jpg in Resources */,
 				87E73710244F83E500E7BC0F /* earth-emissive.jpg in Resources */,
@@ -554,6 +578,7 @@
 				877FBCAB1E9D79AA00407209 /* yellowGlow-32x32.png in Resources */,
 				87A3DAA32450DC7700D772B9 /* roughness.png in Resources */,
 				87A3DA9F2450DC7700D772B9 /* metalness.png in Resources */,
+				C944565C2C157A5D007A7B4F /* greenGlow-32x32.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,10 +594,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				87AEE2B72A3277A4000F4A34 /* eso0932a_bottom.png in Resources */,
+				C94456632C157A5D007A7B4F /* redGlow-32x32.png in Resources */,
 				87AEE2B32A3277A4000F4A34 /* eso0932a_right.png in Resources */,
 				87AEE2B42A3277A4000F4A34 /* eso0932a_left.png in Resources */,
 				87AEE2A42A327578000F4A34 /* Preview Assets.xcassets in Resources */,
 				87AEE2B52A3277A4000F4A34 /* eso0932a_top.png in Resources */,
+				C94456592C157A5D007A7B4F /* blueGlow-32x32.png in Resources */,
+				C94456692C158545007A7B4F /* airports.json in Resources */,
 				87AEE2BA2A3277A4000F4A34 /* earth-specular.jpg in Resources */,
 				87AEE2B82A3277A4000F4A34 /* earth-bump.png in Resources */,
 				87AEE2B92A3277A4000F4A34 /* world-large.jpg in Resources */,
@@ -583,6 +611,7 @@
 				87AEE2B62A3277A4000F4A34 /* earth-emissive.jpg in Resources */,
 				87AEE2B02A3277A4000F4A34 /* metalness.png in Resources */,
 				87AEE2B22A3277A4000F4A34 /* world-ultra.jpg in Resources */,
+				C944565E2C157A5D007A7B4F /* greenGlow-32x32.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -594,14 +623,18 @@
 				87ACA57B1EC3BEA9002C6964 /* eso0932a_back.png in Resources */,
 				87ACA5841EC3BEA9002C6964 /* eso0932a_left.png in Resources */,
 				87A3DAA12450DC7700D772B9 /* roughness.png in Resources */,
+				C944565F2C157A5D007A7B4F /* redGlow-32x32.png in Resources */,
+				C94456652C158545007A7B4F /* airports.json in Resources */,
 				87ACA57E1EC3BEA9002C6964 /* eso0932a_bottom.png in Resources */,
 				87B2479D1E96C20B00A2EAA7 /* LaunchScreen.storyboard in Resources */,
 				87ACA5871EC3BEA9002C6964 /* eso0932a_right.png in Resources */,
+				C944565A2C157A5D007A7B4F /* greenGlow-32x32.png in Resources */,
 				87B2479A1E96C20B00A2EAA7 /* Assets.xcassets in Resources */,
 				87B2481F1E9711E600A2EAA7 /* yellowGlow-32x32.png in Resources */,
 				87A3DAAB2450DCFE00D772B9 /* world-ultra.jpg in Resources */,
 				87A3DAA72450DCFE00D772B9 /* world-large.jpg in Resources */,
 				87B247981E96C20B00A2EAA7 /* Main.storyboard in Resources */,
+				C94456552C157A5D007A7B4F /* blueGlow-32x32.png in Resources */,
 				87ACA5811EC3BEA9002C6964 /* eso0932a_front.png in Resources */,
 				87B247C91E96C75D00A2EAA7 /* earth-specular.jpg in Resources */,
 				87A3DA9D2450DC7700D772B9 /* metalness.png in Resources */,
@@ -616,10 +649,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				87ACA57C1EC3BEA9002C6964 /* eso0932a_back.png in Resources */,
+				C94456602C157A5D007A7B4F /* redGlow-32x32.png in Resources */,
 				87ACA5851EC3BEA9002C6964 /* eso0932a_left.png in Resources */,
 				87A3DAA22450DC7700D772B9 /* roughness.png in Resources */,
 				87ACA57F1EC3BEA9002C6964 /* eso0932a_bottom.png in Resources */,
 				87B247FB1E96D5D700A2EAA7 /* earth-specular.jpg in Resources */,
+				C94456562C157A5D007A7B4F /* blueGlow-32x32.png in Resources */,
+				C94456662C158545007A7B4F /* airports.json in Resources */,
 				87B2481D1E97112200A2EAA7 /* whiteGlow-32x32.png in Resources */,
 				87ACA5881EC3BEA9002C6964 /* eso0932a_right.png in Resources */,
 				87A3DAAC2450DCFE00D772B9 /* world-ultra.jpg in Resources */,
@@ -630,6 +666,7 @@
 				8714AC811E98034B0069A8F1 /* earth-bump.png in Resources */,
 				87ACA58B1EC3BEA9002C6964 /* eso0932a_top.png in Resources */,
 				87E7370F244F83E500E7BC0F /* earth-emissive.jpg in Resources */,
+				C944565B2C157A5D007A7B4F /* greenGlow-32x32.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -638,10 +675,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				87E73756244FAD0500E7BC0F /* earth-emissive.jpg in Resources */,
+				C94456622C157A5D007A7B4F /* redGlow-32x32.png in Resources */,
 				87E73759244FAD0500E7BC0F /* eso0932a_back.png in Resources */,
 				87A3DAAE2450DCFE00D772B9 /* world-ultra.jpg in Resources */,
 				87E7375C244FAD0500E7BC0F /* eso0932a_left.png in Resources */,
 				87E7375A244FAD0500E7BC0F /* eso0932a_bottom.png in Resources */,
+				C94456582C157A5D007A7B4F /* blueGlow-32x32.png in Resources */,
+				C94456682C158545007A7B4F /* airports.json in Resources */,
 				87A3DAA02450DC7700D772B9 /* metalness.png in Resources */,
 				87A3DAAA2450DCFE00D772B9 /* world-large.jpg in Resources */,
 				87E7375D244FAD0500E7BC0F /* eso0932a_right.png in Resources */,
@@ -652,6 +692,7 @@
 				87E7375B244FAD0500E7BC0F /* eso0932a_front.png in Resources */,
 				87E73753244FAD0500E7BC0F /* yellowGlow-32x32.png in Resources */,
 				87E7375E244FAD0500E7BC0F /* eso0932a_top.png in Resources */,
+				C944565D2C157A5D007A7B4F /* greenGlow-32x32.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -664,6 +705,9 @@
 			files = (
 				877FBCA91E9D789900407209 /* SwiftGlobe.swift in Sources */,
 				87E736F4244F4C2D00E7BC0F /* GlowingMarker.swift in Sources */,
+				C944564F2C157014007A7B4F /* GlobeView.swift in Sources */,
+				C94456432C155F9B007A7B4F /* InflightService.swift in Sources */,
+				C94456492C156C5F007A7B4F /* FlightInfoModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,6 +719,9 @@
 				87AEE29F2A327577000F4A34 /* ContentView.swift in Sources */,
 				87AEE29D2A327577000F4A34 /* SwiftGlobe_WatchApp.swift in Sources */,
 				87AEE2AD2A327645000F4A34 /* GlowingMarker.swift in Sources */,
+				C94456452C155F9B007A7B4F /* InflightService.swift in Sources */,
+				C944564B2C156C5F007A7B4F /* FlightInfoModel.swift in Sources */,
+				C94456512C157014007A7B4F /* GlobeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -686,6 +733,9 @@
 				87B247951E96C20B00A2EAA7 /* ViewController.swift in Sources */,
 				87B247931E96C20B00A2EAA7 /* AppDelegate.swift in Sources */,
 				87E736F2244F4C2D00E7BC0F /* GlowingMarker.swift in Sources */,
+				C94456412C155F9B007A7B4F /* InflightService.swift in Sources */,
+				C94456472C156C5F007A7B4F /* FlightInfoModel.swift in Sources */,
+				C944564D2C157014007A7B4F /* GlobeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -695,6 +745,9 @@
 			files = (
 				87B247FF1E96D67900A2EAA7 /* SwiftGlobe.swift in Sources */,
 				87E736F3244F4C2D00E7BC0F /* GlowingMarker.swift in Sources */,
+				C944564E2C157014007A7B4F /* GlobeView.swift in Sources */,
+				C94456422C155F9B007A7B4F /* InflightService.swift in Sources */,
+				C94456482C156C5F007A7B4F /* FlightInfoModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -704,6 +757,9 @@
 			files = (
 				87E73760244FAF3A00E7BC0F /* SwiftGlobe.swift in Sources */,
 				87E73762244FAF3A00E7BC0F /* GlowingMarker.swift in Sources */,
+				C94456502C157014007A7B4F /* GlobeView.swift in Sources */,
+				C94456442C155F9B007A7B4F /* InflightService.swift in Sources */,
+				C944564A2C156C5F007A7B4F /* FlightInfoModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
