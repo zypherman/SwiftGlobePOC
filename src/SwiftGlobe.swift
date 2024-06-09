@@ -249,11 +249,11 @@ class SwiftGlobe: ObservableObject {
         }
         
         if let destinationAirport = flightInfo.destinationAirport {
-            let destinationMarker = GlowingMarker(lat: destinationAirport.latitude, lon: destinationAirport.longitude, altitude: kGlobeRadius, markerZindex: 0, style: .dot(.destination), name: kOriginMarkerName)
+            let destinationMarker = GlowingMarker(lat: destinationAirport.latitude, lon: destinationAirport.longitude, altitude: kGlobeRadius, markerZindex: 0, style: .dot(.destination), name: kDestinationMarkerName)
             addMarker(destinationMarker, checkForExisting: true)
         }
         
-        let airplaneMarker = GlowingMarker(lat: flightInfo.latitude, lon: flightInfo.longitude, altitude: kGlobeRadius, markerZindex: 0, style: .dot(.airplane), name: kOriginMarkerName)
+        let airplaneMarker = GlowingMarker(lat: flightInfo.latitude, lon: flightInfo.longitude, altitude: kGlobeRadius, markerZindex: 0, style: .dot(.airplane), name: kAirplaneMarkerName)
         addMarker(airplaneMarker, checkForExisting: true)
         
         focusOnLatLon(flightInfo.latitude, flightInfo.longitude)
@@ -272,11 +272,14 @@ class SwiftGlobe: ObservableObject {
     }
     
     public func addMarker(_ marker: GlowingMarker, checkForExisting: Bool) {
-        if checkForExisting, let existingMarker = globe.childNode(withName: kOriginMarkerName, recursively: true) {
-            print("Updating position of existing marker")
+        if checkForExisting, 
+            let markerName = marker.node.name,
+            let existingMarker = globe.childNode(withName: markerName, recursively: true) {
+            print("Updating position of maker: \(marker.node.name ?? "")")
             existingMarker.position = marker.node.position
         } else {
             globe.addChildNode(marker.node)
+            print("Marker added: \(marker.node.name ?? "")")
         }
     }
     
