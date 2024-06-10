@@ -14,7 +14,9 @@ class FlightInfoModel: ObservableObject {
     @Published var serviceError: Error?
     
     @Published var timeAtOrigin: String = "N/A"
+    @Published var originCity: String = "Origin"
     @Published var timeAtDestination: String = "N/A"
+    @Published var destinationCity: String = "Destination"
     @Published var timeToGo: String = "N/A"
     @Published var groundSpeed: String = "N/A"
     @Published var altitude: String = "N/A"
@@ -55,7 +57,27 @@ class FlightInfoModel: ObservableObject {
                     timeAtDestination = getCurrentTime(for: destinationTimezone)
                 }
                 
-                altitude = formatAltitude(flightInfo.altitude)
+                if let originAirportCity = flightInfo.originAirport?.city {
+                    if let originCountry = flightInfo.originAirport?.country {
+                        if originCountry != "US" {
+                            originCity = "\(originAirportCity)\n\(originCountry)"
+                        } else {
+                            originCity = originAirportCity
+                        }
+                    }
+                }
+                
+                if let destinationAirportCity = flightInfo.destinationAirport?.city {
+                    if let originCountry = flightInfo.destinationAirport?.country {
+                        if originCountry != "US" && originCountry != "United States" {
+                            destinationCity = "\(destinationAirportCity)\n\(originCountry)"
+                        } else {
+                            destinationCity = destinationAirportCity
+                        }
+                    }
+                }
+                
+                altitude = formatAltitude(flightInfo.altitude ?? 0)
                 groundSpeed = "\(convertKnotsToMph(knots: flightInfo.groundspeed)) mph"
                 flightNumber = flightInfo.flightNumber
             }

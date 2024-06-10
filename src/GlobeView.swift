@@ -26,51 +26,61 @@ struct GlobeView: View {
     }
     
     var FlightInfoOverlay: some View {
-        HStack(spacing: 10) {
-            VStack(alignment: .leading) {
-                Text(model.timeAtOrigin)
-                    .font(.title3)
-                Text("Time At Origin")
-                    .font(.caption)
-                    .padding(.bottom, 10)
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(alignment: .top) {
+                VStack(alignment: .leading) {
+                    Text(model.timeAtOrigin)
+                        .font(.title3)
+                    Text("Time at \(model.originCity)")
+                        .font(.caption)
+                        .lineLimit(2)
+                        .multilineTextAlignment(.leading)
+                }
                 
-                Text(model.timeToGo)
-                    .font(.title3)
-                Text("Time till Landing")
-                    .font(.caption)
+                VStack(alignment: .leading) {
+                    Text(model.flightNumber)
+                        .font(.title3)
+                    Text("Flight Number")
+                        .font(.caption)
+                }
+                
+                VStack(alignment: .leading) {
+                    Text(model.timeAtDestination)
+                        .font(.title3)
+                    Text("Time at \(model.destinationCity)")
+                        .font(.caption)
+                        .lineLimit(2)
+                        .multilineTextAlignment(.leading)
+                }
             }
             
-            VStack(alignment: .leading) {
-                Text(model.flightNumber)
-                    .font(.title3)
-                Text("Flight Number")
-                    .font(.caption)
-                    .padding(.bottom, 10)
+            HStack(alignment: .top) {
+                VStack(alignment: .leading) {
+                    Text(model.timeToGo)
+                        .font(.title3)
+                    Text("Time till Landing")
+                        .font(.caption)
+                }
                 
-                Text(model.groundSpeed)
-                    .font(.title3)
-                Text("Ground Speed")
-                    .font(.caption)
-            }
-            
-            VStack(alignment: .leading) {
-                Text(model.timeAtDestination)
-                    .font(.title3)
-                Text("Time at Destination")
-                    .font(.caption)
-                    .padding(.bottom, 10)
+                VStack(alignment: .leading) {
+                    Text(model.groundSpeed)
+                        .font(.title3)
+                    Text("Ground Speed")
+                        .font(.caption)
+                }
                 
-                Text(model.altitude)
-                    .font(.title3)
-                Text("Altitude")
-                    .font(.caption)
+                VStack(alignment: .leading) {
+                    Text(model.altitude)
+                        .font(.title3)
+                    Text("Altitude")
+                        .font(.caption)
+                }
             }
-            
         }
+        .padding(10)
         .foregroundColor(.white)
         .frame(maxWidth: .infinity, idealHeight: 100, maxHeight: 150)
         .background(FlightInfoBackground)
-        .padding(7)
     }
     
     var FlightInfoBackground: some View {

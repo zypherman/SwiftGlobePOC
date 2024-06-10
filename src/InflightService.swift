@@ -2,7 +2,8 @@ import Combine
 import Foundation
 
 struct Airport: Codable, Sendable {
-    let city, country, iata, icao: String // icao is the airport code
+    let iata, country, icao: String
+    var city: String
     let latitude, longitude: Float
     let altitude: Double
     let tz: String
@@ -21,14 +22,15 @@ struct Airport: Codable, Sendable {
 
 struct FlightInfo: Decodable {
     let timestamp: Date
-    let eta: Double? // unsure on this type
+    let eta: Double?
     let flightDuration: Int
     let flightNumber: String
     let latitude, longitude: Float
-    let noseID: String
-    let paState: String? // unsure on this type
-    let vehicleID, destination, origin, flightID: String
-    let airspeed, airTemperature, altitude, distanceToGo: Double
+    let noseID: String?
+    let paState: String? 
+    let vehicleID, destination, origin: String
+    let flightID: String?
+    let airspeed, airTemperature, altitude, distanceToGo: Double?
     let doorState: String
     let groundspeed: Double
     let heading, timeToGo: Int
@@ -46,6 +48,18 @@ struct FlightInfo: Decodable {
         case flightID = "flightId"
         case airspeed, airTemperature, altitude, distanceToGo, doorState, groundspeed, heading, timeToGo, wheelWeightState
     }
+    
+}
+
+extension DateFormatter {
+  static let iso8601Full: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+    formatter.calendar = Calendar(identifier: .iso8601)
+    formatter.timeZone = TimeZone(secondsFromGMT: 0)
+    formatter.locale = Locale(identifier: "en_US_POSIX")
+    return formatter
+  }()
 }
 
 // MARK: - FlightInfo
@@ -54,6 +68,11 @@ struct LongerFlightInfo: Codable, Sendable {
 
     enum CodingKeys: String, CodingKey {
         case response = "Response"
+    }
+    
+    func transformInfoFlightInfo() -> FlightInfo {
+        let flightInfo = response.flightInfo
+        return FlightInfo(timestamp: flightInfo.utcTimeDate ?? Date.now, eta: nil, flightDuration: 0, flightNumber: flightInfo.flightNumberInfo, latitude: flightInfo.latitude, longitude: flightInfo.longitude, noseID: nil, paState: nil, vehicleID: flightInfo.tailNumber, destination: flightInfo.destinationAirportCode, origin: flightInfo.departureAirportCode, flightID: nil, airspeed: nil, airTemperature: 0, altitude: flightInfo.altitude, distanceToGo: 0, doorState: "", groundspeed: flightInfo.hspeed, heading: 0, timeToGo: response.systemInfo.timeToLand, wheelWeightState: "")
     }
 }
 
@@ -87,11 +106,19 @@ struct FlightInfoClass: Codable, Sendable {
     let departureTime: String?
     let abpVersion, acpuVersion: String
     let videoService: Bool
-    let latitude, longitude, altitude: Double
+    let latitude, longitude: Float
+    let altitude: Double
     let localTime: String?
     let utcTime: String
     let destinationTimeZoneOffset: Int
     let hspeed, vspeed: Double
+    
+    var utcTimeDate: Date? {
+        guard let utcTimeDate = DateFormatter.iso8601Full.date(from: utcTime) else {
+            return nil
+        }
+        return utcTimeDate
+    }
 }
 
 // MARK: - ServiceInfo
@@ -104,8 +131,9 @@ struct ServiceInfo: Codable, Sendable {
 
 // MARK: - SystemInfo
 struct SystemInfo: Codable, Sendable {
-    let wapType, systemType, arincEnabled, horizontalVelocity: String
-    let verticalVelocity, aboveGndLevel, aboveSeaLevel, flightPhase: String
+    let wapType, systemType, arincEnabled: String
+    let aboveGndLevel, aboveSeaLevel, flightPhase: String
+    let horizontalVelocity, verticalVelocity: String
     let flightNo: String
     let timeToLand: Int
     let paxSSIDStatus, casSSIDStatus, countryCode, airportCode: String
@@ -137,7 +165,7 @@ class InflightService {
     }
     
     let urls = [
-//        URL(string: "https://kertob.americanplus.us/gtgn/flight1.php")!
+        URL(string: "https://kertob.americanplus.us/gtgn/flight1.php")!,
         URL(string: "https://kertob.americanplus.us/gtgn/flight2.php")!
     ]
     
@@ -197,7 +225,17 @@ class InflightService {
             // Decode the JSON data into FlightInfo
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
-            var flightInfo = try decoder.decode(FlightInfo.self, from: data)
+            
+            var flightInfo: FlightInfo
+            
+            // future TODO, add a swiftier way to hold both the urls in an easier to distinguish way
+            if activeUrl.absoluteString.contains("flight1.php") {
+                let longFlightInfo = try decoder.decode(LongerFlightInfo.self, from: data)
+                // transform into FlightInfo
+                flightInfo = longFlightInfo.transformInfoFlightInfo()
+            } else {
+                flightInfo = try decoder.decode(FlightInfo.self, from: data)
+            }
             
             // configure airport data
             // not 100% to use ICAO vs IATA
