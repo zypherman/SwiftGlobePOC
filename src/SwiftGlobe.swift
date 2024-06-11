@@ -446,13 +446,34 @@ class SwiftGlobe: ObservableObject {
     
     public func focusOnLatLon(_ lat: Float, _ lon: Float) {
         globe.removeAllActions()
-        userTiltRadians = lat / 180.0 * .pi
         
-        userTiltRadians = userTiltRadians + 150
-        userRotationRadians = lon / -180 * .pi
+        let latRadians = lat / 180.0 * .pi
+        let lonRadians = lon / 180.0 * .pi
         
-//        userRotationRadians = userRotationRadians + 150
+        // Set user rotation
+        userTiltRadians = latRadians
+        userRotationRadians = -lonRadians
+        
         applyUserTiltAndRotation()
+        
+        // Adjust the camera's position to look at the target point
+        let targetPosition = SCNVector3(
+            x: kGlobeRadius * cos(latRadians) * cos(lonRadians),
+            y: kGlobeRadius * cos(latRadians) * sin(lonRadians),
+            z: kGlobeRadius * sin(latRadians)
+        )
+        
+        let cameraLookAtConstraint = SCNLookAtConstraint(target: globe)
+        cameraLookAtConstraint.isGimbalLockEnabled = true
+        cameraNode.constraints = [cameraLookAtConstraint]
+        
+        // Position camera to face the target point on the globe
+        cameraNode.position = SCNVector3(
+            x: targetPosition.x * 1.5,
+            y: targetPosition.y * 1.5,
+            z: targetPosition.z + kCameraAltitude
+        )
+        
         let axisAngle = SCNVector4(0, 1, 0, 0 )
         let spinTo = SCNAction.rotate(toAxisAngle: axisAngle, duration: 0.1)
         globe.runAction(spinTo)
