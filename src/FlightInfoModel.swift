@@ -1,18 +1,9 @@
-//
-//  FlightInfoModel.swift
-//  SwiftGlobe
-//
-//  Created by John Anderson on 6/8/24.
-//  Copyright © 2024 David Mojdehi. All rights reserved.
-//
-
 import Foundation
 
 @MainActor
 class FlightInfoModel: ObservableObject {
     @Published var flightInfo: FlightInfo?
     @Published var serviceError: Error?
-    
     @Published var timeAtOrigin: String = "N/A"
     @Published var originCity: String = "Origin"
     @Published var timeAtDestination: String = "N/A"
@@ -21,6 +12,8 @@ class FlightInfoModel: ObservableObject {
     @Published var groundSpeed: String = "N/A"
     @Published var altitude: String = "N/A"
     @Published var flightNumber: String = "N/A"
+    @Published var connectionError: InflightServiceError?
+    @Published var fov = CGFloat(40.0)
     
     private var timer: Timer?
     private var airports: [Airport] = []
@@ -31,11 +24,31 @@ class FlightInfoModel: ObservableObject {
     }
     
     private func scheduleTimer() {
+        print("Starting HTTP poll for updated flight info")
+        
         timer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true) { _ in
-            print("Starting HTTP poll for updated flight info")
-            Task { @MainActor in
+            print("Polling for updated flight info")
+            
+            Task {
                 await self.fetchFlightInfo()
             }
+        }
+    }
+    
+    func refresh() async {
+        await checkConnections()
+        await fetchFlightInfo()
+    }
+    
+    func checkConnections() async {
+        do {
+            connectionError = nil
+            _ = try service.checkForValidSSID()
+            _ = try await service.checkForActiveUrl()
+        } catch let error as InflightServiceError {
+            connectionError = error
+        } catch {
+            print("non inflight service error thrown")
         }
     }
     
@@ -59,7 +72,7 @@ class FlightInfoModel: ObservableObject {
                 
                 if let originAirportCity = flightInfo.originAirport?.city {
                     if let originCountry = flightInfo.originAirport?.country {
-                        if originCountry != "US" {
+                        if originCountry != "US" && originCountry != "United States" {
                             originCity = "\(originAirportCity)\n\(originCountry)"
                         } else {
                             originCity = originAirportCity
@@ -68,9 +81,9 @@ class FlightInfoModel: ObservableObject {
                 }
                 
                 if let destinationAirportCity = flightInfo.destinationAirport?.city {
-                    if let originCountry = flightInfo.destinationAirport?.country {
-                        if originCountry != "US" && originCountry != "United States" {
-                            destinationCity = "\(destinationAirportCity)\n\(originCountry)"
+                    if let destinationCountry = flightInfo.destinationAirport?.country {
+                        if destinationCountry != "US" && destinationCountry != "United States" {
+                            destinationCity = "\(destinationAirportCity)\n\(destinationCountry)"
                         } else {
                             destinationCity = destinationAirportCity
                         }
@@ -81,9 +94,11 @@ class FlightInfoModel: ObservableObject {
                 groundSpeed = "\(convertKnotsToMph(knots: flightInfo.groundspeed)) mph"
                 flightNumber = flightInfo.flightNumber
             }
-        } catch {
+        } catch let error as InflightServiceError {
             print("There was an error retrieving the flight info")
-            // Error handling here?
+            connectionError = error
+        } catch {
+            print("non inflightserviceerror thrown")
         }
     }
 }

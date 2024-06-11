@@ -107,6 +107,7 @@
 		C944565A2C157A5D007A7B4F /* greenGlow-32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C94456532C157A5D007A7B4F /* greenGlow-32x32.png */; };
 		C944565F2C157A5D007A7B4F /* redGlow-32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = C94456542C157A5D007A7B4F /* redGlow-32x32.png */; };
 		C94456652C158545007A7B4F /* airports.json in Resources */ = {isa = PBXBuildFile; fileRef = C94456642C158545007A7B4F /* airports.json */; };
+		C944566C2C1781B6007A7B4F /* WifiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C944566B2C1781B6007A7B4F /* WifiManager.swift */; };
 		C94A05AE2C0E81F00094E8A0 /* SwiftAstro in Frameworks */ = {isa = PBXBuildFile; productRef = C94A05AD2C0E81F00094E8A0 /* SwiftAstro */; };
 /* End PBXBuildFile section */
 
@@ -189,6 +190,8 @@
 		C94456532C157A5D007A7B4F /* greenGlow-32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greenGlow-32x32.png"; sourceTree = "<group>"; };
 		C94456542C157A5D007A7B4F /* redGlow-32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redGlow-32x32.png"; sourceTree = "<group>"; };
 		C94456642C158545007A7B4F /* airports.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = airports.json; sourceTree = "<group>"; };
+		C944566A2C178135007A7B4F /* SwiftGlobe-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SwiftGlobe-iOS.entitlements"; sourceTree = "<group>"; };
+		C944566B2C1781B6007A7B4F /* WifiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -299,6 +302,7 @@
 		87B247911E96C20B00A2EAA7 /* SwiftGlobe-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				C944566A2C178135007A7B4F /* SwiftGlobe-iOS.entitlements */,
 				87B247921E96C20B00A2EAA7 /* AppDelegate.swift */,
 				87B247941E96C20B00A2EAA7 /* ViewController.swift */,
 				87B247961E96C20B00A2EAA7 /* Main.storyboard */,
@@ -361,6 +365,7 @@
 				C94456402C155F9B007A7B4F /* InflightService.swift */,
 				C94456462C156C5F007A7B4F /* FlightInfoModel.swift */,
 				C944564C2C157014007A7B4F /* GlobeView.swift */,
+				C944566B2C1781B6007A7B4F /* WifiManager.swift */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -735,6 +740,7 @@
 				87E736F2244F4C2D00E7BC0F /* GlowingMarker.swift in Sources */,
 				C94456412C155F9B007A7B4F /* InflightService.swift in Sources */,
 				C94456472C156C5F007A7B4F /* FlightInfoModel.swift in Sources */,
+				C944566C2C1781B6007A7B4F /* WifiManager.swift in Sources */,
 				C944564D2C157014007A7B4F /* GlobeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1071,6 +1077,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "SwiftGlobe-iOS/SwiftGlobe-iOS.entitlements";
 				DEVELOPMENT_TEAM = M7VHVW86G9;
 				INFOPLIST_FILE = "SwiftGlobe-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -1089,6 +1096,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "SwiftGlobe-iOS/SwiftGlobe-iOS.entitlements";
 				DEVELOPMENT_TEAM = M7VHVW86G9;
 				INFOPLIST_FILE = "SwiftGlobe-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;

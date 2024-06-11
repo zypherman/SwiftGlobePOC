@@ -210,6 +210,15 @@ class SwiftGlobe: ObservableObject {
         applyUserTiltAndRotation()
         
         startPositionUpdateTimer()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(orientationDidChange), name: UIDevice.orientationDidChangeNotification, object: nil)
+    }
+    
+    @objc func orientationDidChange(notification: Notification) {
+        // Check if the current device orientation is not flat
+        if UIDevice.current.orientation.isPortrait || UIDevice.current.orientation.isLandscape {
+            resetFOV(UIDevice.current.orientation.isPortrait)
+        }
     }
     
     public func addSunMarker() {
@@ -254,6 +263,7 @@ class SwiftGlobe: ObservableObject {
         }
         
         let airplaneMarker = GlowingMarker(lat: flightInfo.latitude, lon: flightInfo.longitude, altitude: kGlobeRadius, markerZindex: 0, style: .dot(.airplane), name: kAirplaneMarkerName)
+        airplaneMarker.addPulseAnimation()
         addMarker(airplaneMarker, checkForExisting: true)
         
         focusOnLatLon(flightInfo.latitude, flightInfo.longitude)
@@ -281,6 +291,10 @@ class SwiftGlobe: ObservableObject {
             globe.addChildNode(marker.node)
             print("Marker added: \(marker.node.name ?? "")")
         }
+    }
+    
+    func resetFOV(_ isPortrait: Bool) {
+        camera.fieldOfView = isPortrait ? kDefaultCameraFov : kDefaultCameraFov - 20
     }
     
     internal func setupInSceneView(_ v: SCNView, forARKit : Bool, enableAutomaticSpin: Bool) {

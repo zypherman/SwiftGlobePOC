@@ -1,5 +1,6 @@
 import Combine
 import Foundation
+import NetworkExtension
 
 struct Airport: Codable, Sendable {
     let iata, country, icao: String
@@ -149,12 +150,27 @@ struct SystemInfo: Codable, Sendable {
     }
 }
 
-class InflightService {
+enum InflightServiceError: Error {
+    case wifiSSIDError
+    case serviceDown
+    case fetchFlightDataError
+    case airportDataError
     
-    enum InflightServiceError: Error {
-        case fetchFlightDataError
-        case requestError
+    var description: String {
+        switch self {
+        case .wifiSSIDError:
+            return "Please ensure you are connected to inflight wifi"
+        case .fetchFlightDataError:
+            return "There was an error retrieving the latest flight information, please refresh"
+        case .serviceDown:
+            return "There is an issue with the inflight wifi service, please refresh"
+        case .airportDataError:
+            return "Airport data was unable to be loaded"
+        }
     }
+}
+
+class InflightService: ObservableObject {
     
     private var airports: [Airport] = []
     private var activeUrl: URL?
@@ -164,54 +180,68 @@ class InflightService {
         return URLSession(configuration: configuration)
     }
     
+    let validSSIDs = ["aainflight.com", "Test"]
+    
     let urls = [
         URL(string: "https://kertob.americanplus.us/gtgn/flight1.php")!,
         URL(string: "https://kertob.americanplus.us/gtgn/flight2.php")!
     ]
     
     init() {
-        checkForActiveUrl()
-        airports = loadAirports()
+        loadAirports()
+    }
+    
+    func checkForValidSSID() throws -> Bool {
+        let wifiManager = WiFiManager()
+        if let wifiSSID = wifiManager.getCurrentWiFiSSID(), validSSIDs.contains(wifiSSID) {
+            return true
+        } else {
+            throw InflightServiceError.wifiSSIDError
+        }
     }
     
     // load airport data from file
-    private func loadAirports() -> [Airport] {
+    private func loadAirports() {
         if let path = Bundle.main.path(forResource: "airports", ofType: "json") {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path))
                 let decoder = JSONDecoder()
-                return try decoder.decode([Airport].self, from: data)
+                airports = try decoder.decode([Airport].self, from: data)
+                return
             } catch {
                 print("Failed to load airport data: \(error.localizedDescription)")
             }
         } else {
             print("Could not find airports.json file")
         }
-        return []
+        airports = []
     }
 
     // check which URL is valid for FlightInfo data
-    private func checkForActiveUrl() {
-        Task {
-            for url in urls {
-                do {
-                    let (_, response) = try await session.data(from: url)
-                    
-                    if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
-                        // valid url found
-                        print("valid url found: \(url)")
-                        activeUrl = url
-                        break
-                    }
-                } catch {
-                    print("error with request: \(error.localizedDescription)")
+    func checkForActiveUrl() async throws -> Bool {
+        for url in urls {
+            do {
+                let (_, response) = try await session.data(from: url)
+                
+                if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+                    // valid url found
+                    print("valid url found: \(url)")
+                    activeUrl = url
+                    return true
                 }
+            } catch {
+                print("error with request: \(error.localizedDescription)")
+                throw InflightServiceError.serviceDown
             }
         }
+        return false
     }
     
     func fetchFlightInfo() async throws -> FlightInfo? {
         guard let activeUrl else { return nil }
+        if airports.isEmpty {
+            throw InflightServiceError.airportDataError
+        }
         
         do {
             let (data, response) = try await session.data(from: activeUrl)
@@ -240,12 +270,12 @@ class InflightService {
             // configure airport data
             // not 100% to use ICAO vs IATA
             flightInfo.originAirport = airports.first(where: { $0.icao == flightInfo.origin })
-            flightInfo.destinationAirport = airports.first(where: { $0.icao == flightInfo.destination })
+            flightInfo.destinationAirport = airports.first(where: { ($0.icao == flightInfo.destination)})
             
             return flightInfo
         } catch {
             print("error: \(error.localizedDescription)")
-            throw error
+            throw InflightServiceError.fetchFlightDataError
         }
     }
 }
