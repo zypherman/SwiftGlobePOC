@@ -161,9 +161,9 @@ enum InflightServiceError: Error {
         case .wifiSSIDError:
             return "Please ensure you are connected to inflight wifi"
         case .fetchFlightDataError:
-            return "There was an error retrieving the latest flight information, please refresh"
+            return "Error retrieving flight information, please refresh"
         case .serviceDown:
-            return "There is an issue with the inflight wifi service, please refresh"
+            return "Inflight Wifif Error, please refresh"
         case .airportDataError:
             return "Airport data was unable to be loaded"
         }
@@ -220,21 +220,18 @@ class InflightService: ObservableObject {
     // check which URL is valid for FlightInfo data
     func checkForActiveUrl() async throws -> Bool {
         for url in urls {
-            do {
-                let (_, response) = try await session.data(from: url)
-                
+            if let (_, response) = try? await session.data(from: url) {
                 if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
                     // valid url found
                     print("valid url found: \(url)")
                     activeUrl = url
                     return true
                 }
-            } catch {
-                print("error with request: \(error.localizedDescription)")
-                throw InflightServiceError.serviceDown
             }
         }
-        return false
+        
+        // if we go through all our URL's and no valid url is found, throw an error
+        throw InflightServiceError.serviceDown
     }
     
     func fetchFlightInfo() async throws -> FlightInfo? {
